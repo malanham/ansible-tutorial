@@ -12,7 +12,7 @@ export HISTCONTROL=ignoredups
 alias df="df -h"
 alias ls='ls --color=auto'
 alias ll="ls -lha"
-alias wanip='dig @resolver1.opendns.com ANY myip.opendns.com +short'
+alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias p="sudo pacman"
 alias r="sudo ranger"
 alias ref="sudo reflector --country 'United States' --latest 200 --age 24 --sort rate --save /etc/pacman.d/mirrorlist"
