@@ -19,4 +19,4 @@
     pacman:
       name: htop
       state: latest
-    when: ansible_distribution == "Archlinux"
+      when: ansible_distribution == "Archlinux"
