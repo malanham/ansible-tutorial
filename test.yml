@@ -16,5 +16,5 @@
   - name: install htop
     pacman:
       name: htop
-      state: latest
+      state: absent
     when: ansible_distribution == "Archlinux"
