@@ -19,10 +19,12 @@
       state: latest
     when: ansible_distribution == "Archlinux"
     
-  - name: update repository index for Linux Mint
+  - name: update repository index for Linux Mint, Debian Ubuntu
     package:
       update_cache: yes
-    when: ansible_distribution == "Linux Mint"
+    when: ansible_distribution in ["Debian", "Ubuntu", "Linux Mint"]
+    
+    
     
   - name: copy .bashrc file
     copy:
