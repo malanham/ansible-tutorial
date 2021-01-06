@@ -3,23 +3,32 @@
   tasks:
 
   - name: update repository index for Archlinux
-    pacman:
+    package:
       update_cache: yes
     when: ansible_distribution == "Archlinux"
 
   - name: remove apache2 package
-    pacman:
+    package:
       name: apache
       state: absent
     when: ansible_distribution == "Archlinux"
 
   - name: install htop
-    pacman:
+    package:
       name: htop
-      state: absent
+      state: latest
     when: ansible_distribution == "Archlinux"
     
   - name: update repository index for Linux Mint
-    apt:
+    package:
       update_cache: yes
     when: ansible_distribution == "Linux Mint"
+    
+  - name: copy .bashrc file
+    copy:
+     src: files/bashrc
+     dest: /home/mark/.bashrc
+     owner: mark
+     group: mark
+ 
+    
