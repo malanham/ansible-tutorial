@@ -7,13 +7,13 @@
       update_cache: yes
     when: ansible_distribution == "Archlinux"
 
-  - name: remove apache2 package
+  - name: remove apache2 package Archlinux
     package:
       name: apache
       state: absent
     when: ansible_distribution == "Archlinux"
 
-  - name: install htop
+  - name: install htop Archlinux
     package:
       name: htop
       state: latest
@@ -23,14 +23,19 @@
     package:
       update_cache: yes
     when: ansible_distribution in ["Debian", "Ubuntu", "Linux Mint"]
-    
-    
-    
-  - name: copy .bashrc file
+      
+  - name: copy .bashrc file Archlinux
     copy:
      src: files/bashrc
      dest: /home/mark/.bashrc
      owner: mark
      group: mark
- 
-    
+    when: ansible_distribution == "Archlinux"
+   
+  - name: copy .bashrc file "Debian", "Ubuntu", "Linux Mint"
+    copy:
+     src: files/bashrcdeb
+     dest: /home/mark/.bashrc
+     owner: mark
+     group: mark
+    when: ansible_distribution in ["Debian", "Ubuntu", "Linux Mint"]
