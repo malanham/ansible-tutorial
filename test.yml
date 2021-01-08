@@ -2,10 +2,23 @@
   become: true
   tasks:
 
-  - name: update repository index for Archlinux
-    package:
+# updates package cache and installs updated packages Arch linux
+
+  - name: install updates Archlinux
+    pacman:
       update_cache: yes
+      upgrade: yes
     when: ansible_distribution == "Archlinux"
+    
+# updates package cache and installs updated packages Debian systems
+
+  - name: install updates for Linux Mint, Debian Ubuntu
+    apt:
+      upgrade: dist
+      update_cache: yes
+    when: ansible_distribution in ["Debian", "Ubuntu", "Linux Mint"]
+
+# instalation and removal of packages Arch linux
 
   - name: remove apache2 package Archlinux
     package:
@@ -19,29 +32,7 @@
       state: latest
     when: ansible_distribution == "Archlinux"
     
-  - name: update repository index for Linux Mint, Debian Ubuntu
-    package:
-      update_cache: yes
-    when: ansible_distribution in ["Debian", "Ubuntu", "Linux Mint"]
-      
-  - name: copy .bashrc file Archlinux
-    copy:
-     src: files/bashrc
-     dest: /home/mark/.bashrc
-     owner: mark
-     group: mark
-    when: ansible_distribution == "Archlinux"
-
-  - name: upgrade packages Archlinux
-    pacman:
-      update_cache: yes
-      upgrade: yes
-    when: ansible_distribution == "Archlinux"
-
-
-  - name: upgrade packages debian
-    apt: name=* update_cache=yes state=latest
-    when: ansible_distribution in ["Debian", "Ubuntu", "Linux Mint"]
+# moves a configurarion file to target machine
 
   - name: copy .bashrc file "Debian", "Ubuntu", "Linux Mint"
     copy:
@@ -50,3 +41,11 @@
      owner: mark
      group: mark
     when: ansible_distribution in ["Debian", "Ubuntu", "Linux Mint"]
+
+  - name: copy .bashrc file Archlinux
+    copy:
+     src: files/bashrc
+     dest: /home/mark/.bashrc
+     owner: mark
+     group: mark
+    when: ansible_distribution == "Archlinux"
