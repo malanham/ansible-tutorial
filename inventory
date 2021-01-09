@@ -1,13 +1,15 @@
 # Arch Linux
+[Arch]
 192.168.0.21
 192.168.0.106
 
 # Linux Mint
+[LinuxMint]
 192.168.0.105
 
 [pi_collection]
 # weather
-192.168.0.119
+piweather1
 piweather2
 # Raspberry pi 4 Debian
 server

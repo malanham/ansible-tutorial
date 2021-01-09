@@ -1,0 +1,13 @@
+---
+
+- hosts: Arch
+  remote_user: mark 
+  become: true 
+  tasks:
+
+  - name: install updates Archlinux
+    pacman:
+      update_cache: yes
+      upgrade: yes
+    when: ansible_distribution == "Archlinux"
+
