@@ -1,0 +1,5 @@
+---
+- name: Test Ping
+  hosts: pi_collection
+  tasks:
+  - action: ping

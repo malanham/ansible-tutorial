@@ -5,9 +5,12 @@
 # Linux Mint
 192.168.0.105
 
+[pi_collection]
+# weather
+192.168.0.119
+piweather2
 # Raspberry pi 4 Debian
-192.168.0.131
-
-
+server
+octopi.local
 
 
