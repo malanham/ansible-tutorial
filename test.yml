@@ -1,6 +1,13 @@
 - hosts: all
   become: true
   tasks:
+  
+  - name: create ansible1 user
+    tags:  always
+    user:
+      name:  ansible1
+      groups:  root
+       
 
 # updates package cache and installs updated packages Arch linux
 
